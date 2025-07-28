@@ -1,0 +1,90 @@
+# Sensitive files - DO NOT UPLOAD TO GITHUB
+credentials.json
+.env
+token.json
+deployment.env
+
+# Generated database and cache files
+vector_store/
+*.db
+*.sqlite
+*.sqlite3
+chroma.sqlite3
+
+# Log files
+logs/
+*.log
+
+# Python cache and build files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Docker volumes and temporary files
+docker-compose.override.yml
+.docker/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# pytest cache
+.pytest_cache/
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+
+# mypy type checker
+.mypy_cache/
+.dmypy.json
+dmypy.json 

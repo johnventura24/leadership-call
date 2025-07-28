@@ -1,0 +1,132 @@
+# Leadership Knowledge Base Agent - Environment Configuration
+
+# ==========================================
+# CORE CONFIGURATION
+# ==========================================
+
+# OpenAI API Configuration
+OPENAI_API_KEY=your-openai-api-key-here
+EMBEDDING_MODEL=text-embedding-ada-002
+QA_MODEL=gpt-3.5-turbo
+MAX_TOKENS=1000
+TEMPERATURE=0.7
+
+# Google Drive Configuration
+GOOGLE_CREDENTIALS_PATH=credentials.json
+GOOGLE_TOKEN_PATH=token.json
+GOOGLE_CREDENTIALS_JSON=  # For cloud deployment - base64 encoded credentials
+
+# Legacy Document IDs (optional - for backward compatibility)
+FAQ_DOCUMENT_IDS=doc-id-1,doc-id-2
+MEETING_NOTES_DOCUMENT_IDS=doc-id-3,doc-id-4
+
+# ==========================================
+# APPLICATION CONFIGURATION
+# ==========================================
+
+# Environment
+ENVIRONMENT=development  # development, staging, production
+
+# API Configuration
+PORT=8000
+API_HOST=0.0.0.0
+API_TOKEN=your-secure-api-token-here
+
+# Vector Store Configuration
+VECTOR_STORE_PATH=./vector_store
+COLLECTION_NAME=leadership_knowledge_base
+
+# Text Processing
+CHUNK_SIZE=1000
+CHUNK_OVERLAP=200
+
+# ==========================================
+# CLOUD DEPLOYMENT CONFIGURATION
+# ==========================================
+
+# Database Configuration (Required for cloud deployment)
+DATABASE_URL=postgresql://user:password@host:5432/database
+REDIS_URL=redis://host:6379/0
+
+# AWS Configuration
+AWS_REGION=us-east-1
+ECR_REPOSITORY=your-ecr-repo-name
+
+# ==========================================
+# SLACK INTEGRATION
+# ==========================================
+
+# Slack Bot Configuration
+SLACK_BOT_TOKEN=xoxb-your-slack-bot-token
+SLACK_SIGNING_SECRET=your-slack-signing-secret
+SLACK_APP_TOKEN=xapp-your-slack-app-token
+
+# ==========================================
+# PERFORMANCE & FEATURES
+# ==========================================
+
+# Performance Configuration
+MAX_CONCURRENT_REQUESTS=10
+REQUEST_TIMEOUT=30
+CACHE_TTL=3600
+
+# Feature Flags
+LOAD_DOCS_ON_STARTUP=true
+ENABLE_METRICS=false
+ENABLE_TRACING=false
+
+# ==========================================
+# SECURITY CONFIGURATION
+# ==========================================
+
+# CORS Configuration
+CORS_ORIGINS=*  # Use specific origins for production: https://yourdomain.com,https://anotherdomain.com
+
+# Rate Limiting
+RATE_LIMIT_PER_MINUTE=60
+
+# ==========================================
+# LOGGING CONFIGURATION
+# ==========================================
+
+# Logging
+LOG_LEVEL=INFO
+LOG_FORMAT=%(asctime)s - %(name)s - %(levelname)s - %(message)s
+
+# ==========================================
+# DEPLOYMENT INSTRUCTIONS
+# ==========================================
+
+# Local Development:
+# 1. Copy this file to .env
+# 2. Fill in your OpenAI API key and Google credentials
+# 3. Run: python api_service.py
+
+# AWS Deployment:
+# 1. Set OPENAI_API_KEY and API_TOKEN environment variables
+# 2. Place credentials.json in project root
+# 3. Run: ./deploy.sh
+
+# Digital Ocean Deployment:
+# 1. Set OPENAI_API_KEY and API_TOKEN environment variables
+# 2. Place credentials.json in project root
+# 3. Run: ./deploy-digitalocean.sh
+
+# ==========================================
+# EXAMPLE USAGE
+# ==========================================
+
+# Health Check:
+# curl https://your-api-url.com/health
+
+# Ask Question:
+# curl -H "Authorization: Bearer YOUR_API_TOKEN" \
+#      -H "Content-Type: application/json" \
+#      -d '{"question": "What is our remote work policy?"}' \
+#      https://your-api-url.com/ask
+
+# Sync Documents:
+# curl -H "Authorization: Bearer YOUR_API_TOKEN" \
+#      -H "Content-Type: application/json" \
+#      -d '{"force_refresh": true}' \
+#      https://your-api-url.com/sync 
