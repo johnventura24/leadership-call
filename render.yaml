@@ -1,0 +1,47 @@
+services:
+  # RAG API Service - Free Tier Compatible
+  - type: web
+    name: leadership-rag-api
+    env: python
+    region: oregon
+    plan: free  # Free tier - sleeps after 15min inactivity
+    buildCommand: pip install -r requirements.txt
+    startCommand: python api_service.py
+    healthCheckPath: /health
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false  # Set manually in Render dashboard for security
+      - key: API_TOKEN
+        sync: false  # Set manually in Render dashboard for security
+      - key: GOOGLE_CREDENTIALS_JSON
+        sync: false  # Set manually in Render dashboard for security
+      - key: ENVIRONMENT
+        value: production
+      - key: PORT
+        value: 8000
+      - key: VECTOR_STORE_PATH
+        value: /tmp/vector_store  # Use temporary storage (free tier)
+      - key: EMBEDDING_MODEL
+        value: text-embedding-ada-002
+      - key: QA_MODEL
+        value: gpt-3.5-turbo
+      - key: MAX_TOKENS
+        value: 1000
+      - key: TEMPERATURE
+        value: 0.7
+      - key: CHUNK_SIZE
+        value: 1000
+      - key: CHUNK_OVERLAP
+        value: 200
+      - key: LOAD_DOCS_ON_STARTUP
+        value: true
+      - key: GOOGLE_CREDENTIALS_PATH
+        value: /tmp/credentials.json
+      - key: GOOGLE_TOKEN_PATH
+        value: /tmp/token.json
+
+# Note: Free tier doesn't include databases
+# You'll need to either:
+# 1. Use external free databases (like Supabase, PlanetScale)
+# 2. Upgrade to paid Render plans ($7/month each for PostgreSQL/Redis)
+# 3. Use in-memory storage (data lost on restart)
